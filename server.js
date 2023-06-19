@@ -3,7 +3,7 @@ const path = require('path')
 
 const app = express();
 
-if(process.env.NODE_ENV){
+if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'))
 
   app.get('*',(req,res)=>{
@@ -11,9 +11,9 @@ if(process.env.NODE_ENV){
   })
 }
 
-const port =  5150;
+const PORT =  process.env.PORT || 3000;
 
-app.listen(port, ()=>{
-  `server is listing on port ${port}`
+app.listen(PORT, ()=>{
+  `server is listing on port ${PORT}`
 });
 
